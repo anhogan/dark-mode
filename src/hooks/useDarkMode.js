@@ -2,19 +2,19 @@ import { useEffect } from 'react';
 import useLocalStorage from './useLocalStorage';
 
 const useDarkMode = (key, initialValue) => {
-  const [darkMode, setDarkMode] = useLocalStorage('dark-mode-enabled');
+  const [storedValue, setStoredValue] = useLocalStorage('toggle toggled');
   
   useEffect(() => {
     const className = 'dark-mode';
     const element = window.document.body;
-    if(darkMode === 'dark-mode-enabled') {
+    if(storedValue) {
       element.classList.add(className);
     } else {
       element.classList.remove(className);
     };
-  }, [darkMode]);
+  }, [storedValue]);
 
-  return [storedValue, setValue];
+  return [storedValue, setStoredValue];
 };
 
 export default useDarkMode;
